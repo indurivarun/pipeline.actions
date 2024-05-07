@@ -10,7 +10,7 @@ on:
         description: 'Environment to deploy to'
         required: true
       project-type:
-        description: 'Project type (java or nodejs)'
+        description: 'Project type (java or reactjs)'
         required: true
         type: string
 
@@ -123,7 +123,7 @@ jobs:
       # Authenticate with Artifactory Cloud NPM
       #- name: NPM Authenticate
       #  if:
-      #    ${{ inputs.project-type == 'nodejs' && inputs.app-project-root == '' }}
+      #    ${{ inputs.project-type == 'reactjs' && inputs.app-project-root == '' }}
       #  uses: 
       #  with:
       #    artifactory-username: ${{ secrets.ORG_JFROG_RO_USER }}
@@ -133,7 +133,7 @@ jobs:
 
       - name: Copy npmrc
         if:
-          ${{ inputs.project-type == 'nodejs' && inputs.app-project-root == '' }}
+          ${{ inputs.project-type == 'reactjs' && inputs.app-project-root == '' }}
         working-directory: ${{ inputs.app-project-root }}
         run: |
           cp ~/.npmrc .npmrc
