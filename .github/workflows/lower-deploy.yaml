@@ -84,9 +84,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: parse-project-details
     env:
-      IMAGE_REPO: indurivarun
-      IMAGE_PATH: actions.demo
-        ${{needs.parse-project-details.outputs.project-name }}
+      IMAGE_REPO: indurivarun/actions.demo
+      IMAGE_PATH: ${{needs.parse-project-details.outputs.project-name }}
     steps:
       # Authenticate to Docker
       - name: Docker Login
